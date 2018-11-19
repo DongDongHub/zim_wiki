@@ -1,0 +1,49 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2018-11-19T17:23:01+08:00
+
+====== docker cmd ======
+Created 星期一 19 十一月 2018
+
+redis 相关：
+docker run -p 6379:6379 -p 16379:16379 -d -v ${PWD}/data:/data -v ${PWD}/conf/redis.conf:/etc/redis.conf redis:3.2  redis-server /etc/redis.conf --appendonly yes
+docker run -p 6380:6379 -p 16380:16379 -d -v ${PWD}/data:/data -v ${PWD}/conf/redis.conf:/etc/redis.conf redis:3.2  redis-server /etc/redis.conf --appendonly yes
+docker run -p 6381:6379 -p 16381:16379 -d -v ${PWD}/data:/data -v ${PWD}/conf/redis.conf:/etc/redis.conf redis:3.2  redis-server /etc/redis.conf --appendonly yes
+
+redis 集群 slots 分配
+redis-cli -h 10.224.15.51 -p 6379 cluster addslots {0..10000}
+redis-cli -h 10.224.15.51 -p 6380 cluster addslots {10001..16383}
+
+docker run -p 6379:6379 -p 16379:16379 -d -v /usr/local/tdd/docker/data:/data  redis:3.2  redis-server --appendonly yes
+docker run -p 6379:6379 -d -v /usr/local/tdd/docker/data:/data  redis:3.2  redis-server --appendonly yes
+
+docker exec -it 43f7a65ec7f8 redis-cli
+
+// docker redis cluster  (jpush vagrant node 运行的指令)
+sudo  docker run -p 6379:6379 -p 16379:16379 --name myredis  -v /home/vagrant/docker/redis/redis/node/redis.conf:/etc/redis/redis.conf  -v /home/vagrant/docker/redis/redis/node:/data -d --net=host redis redis-server /etc/redis/redis.conf --appendonly yes
+sudo  docker run -p 6380:6380 -p 16380:16380 --name myredis1 -v /home/vagrant/docker/redis/redis/node1/redis.conf:/etc/redis/redis.conf -v /home/vagrant/docker/redis/redis/node1:/data -d --net=host  redis redis-server /etc/redis/redis.conf --appendonly yes
+
+rabbitmq 相关:
+docker run -d --name rabbitmq --publish 5671:5671  --publish 5672:5672 --publish 4369:4369 --publish 25672:25672 --publish 15671:15671 --publish 15672:15672  rabbitmq:management
+
+nginx 相关:
+ sudo  docker run \
+  --name nginx1 \
+  -d \
+  -p 80:80 -p 443:443 \
+  -v /home/vagrant/docker/nginx/html:/usr/share/nginx/html \
+  -v /home/vagrant/docker/nginx/conf/nginx.conf:/etc/nginx/nginx.conf \
+  -v /home/vagrant/docker/nginx/conf/ssl:/etc/nginx/ssl \
+  -v /home/vagrant/docker/nginx/log:/var/log/nginx \
+  nginx
+  
+  
+  
+ sudo  docker run \
+  --name nginx1 \
+  -p 80:80 -p 443:443 \
+  -v /home/vagrant/docker/nginx/html:/usr/share/nginx/html \
+  -v /home/vagrant/docker/nginx/conf/nginx.conf:/etc/nginx/nginx.conf \
+  -v /home/vagrant/docker/nginx/conf/ssl:/etc/nginx/ssl \
+  -v /home/vagrant/docker/nginx/log:/var/log/nginx \
+  nginx

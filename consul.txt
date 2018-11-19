@@ -1,0 +1,8 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2018-11-19T17:26:28+08:00
+
+====== consul ======
+Created 星期一 19 十一月 2018
+
+consul 启动  ./consul agent -dev -client 0.0.0.0

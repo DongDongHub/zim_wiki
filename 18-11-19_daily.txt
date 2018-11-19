@@ -1,0 +1,9 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2018-11-19T17:00:15+08:00
+
+====== 18-11-19 daily ======
+Created 星期一 19 十一月 2018
+
+https://github.com/shadowsocks/ShadowsocksX-NG/releases
+早上使用了一下 elementery os. 整体的页面还是觉得很舒服。就是反应有点卡有点慢。

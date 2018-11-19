@@ -1,0 +1,8 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2018-11-19T16:58:47+08:00
+
+====== Home ======
+Created 星期一 19 十一月 2018
+
+今天 在修改 api 端的代码时， 发现直接修改结构体的注解 就可以修改 json 之后的元素的名称
